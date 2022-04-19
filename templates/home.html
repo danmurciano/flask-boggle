@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block page %}
+
+<section id="boggle">
+  <h1 class="title"> Boggle <h1>
+
+  <div class="row indicators">
+    <div class="col">
+      <p> Score: <span class="score"/> </p>
+    </div>
+    <div class="col">
+      <p> Time: <span class="timer"/> </p>
+    </div>
+    <div class="col-5">
+      <p> High Score: <span> {{ high_score }} </span> </p>
+      <p class="plays"> In {{ plays }} Plays </p>
+    </div>
+  </div>
+
+  <table id="board">
+    {% for row in board %}
+      <tr>
+      {% for i in row %}
+        <td> {{ i }} </td>
+      {% endfor %}
+      </tr>
+    {% endfor %}
+  </table>
+
+  <form method="POST" class="add-word">
+    <input type="text" name="word" class="word" autofocus>
+    <button type="submit">Submit Word</button>
+  </form>
+
+  <form class="new-game" style="display: none">
+    <button type="submit">New Game</button>
+  </form>
+
+  <p class="msg"> </p>
+
+  <ul class="words"> </ul>
+</section>
+
+{% endblock %}
